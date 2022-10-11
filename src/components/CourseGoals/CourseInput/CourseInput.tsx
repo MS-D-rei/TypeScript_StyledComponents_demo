@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@/components/UI/Button';
 import styled from 'styled-components';
-import '@/components/CourseGoals/CourseInput/CourseInput.css';
+// import '@/components/CourseGoals/CourseInput/CourseInput.css';
 
 interface FormControlProps {
   valid: boolean;

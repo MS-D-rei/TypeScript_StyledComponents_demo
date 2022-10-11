@@ -1,10 +1,17 @@
 import CourseGoalItem from '@/components/CourseGoals/CourseGoalItem/CourseGoalItem';
-import '@/components/CourseGoals/CourseGoalList/CourseGoalList.css';
+import styled from 'styled-components';
+// import '@/components/CourseGoals/CourseGoalList/CourseGoalList.css';
 import { Goal } from '@/components/CourseGoals/types';
+
+const GoalList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
 
 function CourseGoalList(props: { items: Goal[]; onDeleteItem: Function }) {
   return (
-    <ul className="goal-list">
+    <GoalList>
       {props.items.map((goal: Goal) => (
         <CourseGoalItem
           key={goal.id}
@@ -14,7 +21,7 @@ function CourseGoalList(props: { items: Goal[]; onDeleteItem: Function }) {
           {goal.text}
         </CourseGoalItem>
       ))}
-    </ul>
+    </GoalList>
   );
 }
 
