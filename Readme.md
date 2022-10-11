@@ -13,9 +13,10 @@
 ### Basic usage
 1. Make custom component to contain CSS needed to be scoped. (FormControl in example below)
 2. Replace original html element like div to the custom component.
-3. When use props in TypeScript, need to make interface for it. (FormControlProps in below)
+3. When use custom props in TypeScript, need to make interface for it. (FormControlProps in below)
 ```
 import styled from 'styled-components';
+
 interface FormControlProps {
   valid: boolean;
 }
@@ -23,16 +24,19 @@ interface FormControlProps {
 const FormControl = styled.div<FormControlProps>`
   margin: 0.5rem 0;
 
+  // with element
   & input {
   width: 100%;
   border: 1px solid ${(props) => (props.valid ? '#ccc' : 'red')};
   background: ${(props) => (props.valid ? 'transparent' : '#ffd7d7')}
   }
 
+  // with element and pseudo-class
   & input:focus {
     background: #fad0ec;
   }
 
+  // with class and element
   &.invalid label {
   color: red;
   }
@@ -42,7 +46,7 @@ function CourseInput(props: { onAddGoal: Function }) {
   /* ... */
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl valid={isValid}>
+      <FormControl valid={isValid}> // custom component that has CSS
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </FormControl>
